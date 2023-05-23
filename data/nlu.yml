@@ -1,0 +1,676 @@
+version: "3.1"
+nlu:
+- intent: greet
+  examples: |
+    - hey
+    - hello
+    - hi
+    - hello there
+    - good morning
+    - good evening
+    - moin
+    - hey there
+    - let's go
+    - hey dude
+    - goodmorning
+    - goodevening
+    - good afternoon
+    - hiya
+    - what's up
+    - howdy
+    - hi there
+    - nice to see you
+    - how's it going
+    - yo
+    - hi friend
+    - hey buddy
+    - morning
+    - evening
+    - hi-ya
+    - hola
+    - bonjour
+    - yammi
+    - yami
+    - salem
+    - slm
+    - wnk
+    - winek
+    - wink
+    - bot
+    - hey man
+    - sup
+- intent: goodbye
+  examples: |
+    - cu
+    - good by
+    - cee you later
+    - good night
+    - bye
+    - goodbye
+    - have a nice day
+    - see you around
+    - bye bye
+    - see you later
+- intent: affirm
+  examples: |
+    - yes
+    - y
+    - indeed
+    - of course
+    - that sounds good
+    - correct
+    - yeah
+    - yea
+    - yup
+    - sure
+    - amen
+    - fine
+    - good
+    - okay
+    - true
+    - all right
+    - aye
+    - beyond a doubt
+    - by all means
+    - certainly
+    - definitely
+    - even so
+    - exactly
+    - gladly
+    - good enough
+    - granted
+    - indubitably
+    - just so
+    - most assuredly
+    - naturally
+    - positively
+    - precisely
+    - sure thing
+    - surely
+    - undoubtedly
+    - unquestionably
+    - very well
+    - willingly
+    - without fail
+    - yep
+- intent: deny
+  examples: |
+    - no
+    - No
+    - n
+    - never
+    - I don't think so
+    - don't like that
+    - no way
+    - not really
+    - nah
+    - nay
+    - nix
+    - not
+    - absolutely not
+    - by no means
+    - negative
+    - not at all
+    - nothing doing
+    - nope
+    - at no time
+    - forget it
+    - nevermore
+    - not ever
+    - not in any way
+    - not in the least
+    - not on your life
+    - not under any condition
+- intent: mood_great
+  examples: |
+    - perfect
+    - great
+    - amazing
+    - feeling like a king
+    - wonderful
+    - I am feeling very good
+    - I am great
+    - I am amazing
+    - I am going to save the world
+    - super stoked
+    - extremely good
+    - so so perfect
+    - so good
+    - so perfect
+- intent: mood_unhappy
+  examples: |
+    - my day was horrible
+    - I am sad
+    - I don't feel very well
+    - I am disappointed
+    - super sad
+    - I'm so sad
+    - sad
+    - very sad
+    - unhappy
+    - not good
+    - not very good
+    - extremly sad
+    - so saad
+    - so sad
+- intent: bot_challenge
+  examples: |
+    - are you a bot?
+    - are you a human?
+    - am I talking to a bot?
+    - am I talking to a human?
+- intent: thanks
+  examples: |
+    - thank you
+    - thanks
+    - yes, thanks
+    - cheers
+    - thanks a lot
+    - thank you very much
+    - Thank you
+    - Thanks
+    - I appreciate it
+    - Thanks a lot
+    - Thank you so much
+    - I'm grateful
+    - Much appreciated
+    - You're a lifesaver
+    - I owe you one
+    - Thanks for everything
+    - You're the best
+    - You're amazing
+    - Thanks for being with me
+    - I can't thank you enough
+    - You're awesome
+    - Thanks for your advice
+    - Thanks for your kindness
+    - I'm so grateful to you
+    - Thanks for your care
+    - Thanks for your concern
+    - Thanks for your thoughtfulness
+    - You're incredible
+    - Thanks for your feedback
+    - Thanks for your understanding and support
+    - thnx
+    - tanks
+    - tnx
+    - thnk u
+    - tank u
+    - thank u
+- intent: help
+  examples: |
+    - help me
+    - ejrili
+    - Ejrili
+    - help
+    - How can I resolve this issue
+    - Can you give me some guidance on what to do next
+    - I need some assistance
+    - I need some support with this situation
+- intent: tell_accident
+  examples: |
+    - there is an accident
+    - accident
+    - there id been an accident.
+    - There's been an accident!
+    - I just witnessed an accident on the highway.
+    - traffic
+    - big traffic
+    - there is a traffic
+    - there is accident
+    - acident
+    - ther is accident
+    - tere is accident
+    - ther is acident
+    - acciident
+    - accccident
+    - There is an accident
+    - Accident
+- intent: answer_road_accident
+  examples: |
+    - [car accident](road_accident)
+    - there is a [car accident](road_accident)
+    - My car was damaged in a hit-and-run [car accident](road_accident) last night.
+    - [Road accident](road_accident)
+    - [road accident](road_accident)
+    - [Work accident](road_accident)
+    - [Sport accident](road_accident)
+    - it's a [road accident](road_accident)
+    - there is a [road accident](road_accident)
+    - There's been a [road accident](road_accident) down the street.
+    - There is been a [road accident](road_accident) down the street.
+    - [road accident](road_accident) reported on news.
+    - there is an [auto accident](road_accident)
+    - I saw a car accident on  [my way](road_accident) to work.
+    - [auto accident](road_accident) on the highway this morning.
+- intent: answer_victim_or_no_victim
+  examples: |
+    - [I am not the victim](victim_or_no_victim)
+    - [I am not a victim](victim_or_no_victim)
+    - [I'm not victim](victim_or_no_victim)
+    - [i am not victim](victim_or_no_victim)
+    - [i'm not vctim](victim_or_no_victim)
+    - [i'am no vitim](victim_or_no_victim)
+    - [I am not vitim](victim_or_no_victim)
+    - [im not vitim](victim_or_no_victim)
+    - [I am the victim](victim_or_no_victim)
+    - [I'm victim](victim_or_no_victim)
+    - yes, [I'm victim](victim_or_no_victim)
+    - [i am victim](victim_or_no_victim)
+    - [i'm vctim](victim_or_no_victim)
+    - [i'am vitim](victim_or_no_victim)
+    - [I am vitim](victim_or_no_victim)
+- intent: answer_number_victims
+  examples: |
+    - there are [1](number_victims) victims
+    - there are [2](number_victims) victims
+    - there are [3](number_victims) victims
+    - there are [4](number_victims) victims
+    - there are [5](number_victims) victims
+    - there are [6](number_victims) victims
+    - there are [7](number_victims) victims
+    - there are [8](number_victims) victims
+    - there are [9](number_victims) victims
+    - there are [10](number_victims) injured people
+    - there are [11](number_victims) injured people
+    - there are [12](number_victims) injured people
+    - there are [13](number_victims) injured people
+    - there are [14](number_victims) injured people
+    - there are [15](number_victims) injured people
+    - there are two victims
+    - there are three victims
+    - [1](number_victims)
+    - [2](number_victims)
+    - [3](number_victims)
+    - [4](number_victims)
+    - [5](number_victims)
+    - [6](number_victims)
+    - [7](number_victims)
+    - [8](number_victims)
+    - [9](number_victims)
+    - [10](number_victims)
+    - [11](number_victims)
+    - [12](number_victims)
+    - [13](number_victims)
+    - [14](number_victims)
+    - [15](number_victims)
+    - [16](number_victims)
+    - [17](number_victims)
+- intent: answer_adult_or_child
+  examples: |
+    - one man
+    - an adult
+    - adult and child
+    - a man
+    - a [woman](adult_or_child)
+    - one [woman](adult_or_child)
+    - [adult](adult_or_child)
+    - [Adult](adult_or_child)
+    - [Child](adult_or_child)
+    - [child](adult_or_child)
+    - he is adult
+    - he is child
+    - Child
+    - Chiild
+    - children
+    - he is Child
+    - adultt
+    - aadult
+    - addult
+    - ad ult
+    - a adult
+    - [Adult]{"entity": "adult_or_child", "value": "adult"}
+- intent: answer_breath
+  examples: |
+    - [breath](breath)
+    - [breathh](breath)
+    - [breathiing](breath)
+    - He is breathing
+    - he is breathing
+    - he breathes normally
+    - She is breathing
+    - she is breathing
+    - she breathes normally
+    - [Breath]{"entity": "breath", "value": "breath"}
+- intent: answer_bleeding
+  examples: |
+    - the victim is [bleeding](bleeding)
+    - [bleeding](bleeding)
+    - she is [bleeding](bleeding)
+    - he is [bleeding](bleeding)
+    - he is [bleedin](bleeding)
+    - he is [bleding](bleeding)
+    - he sis [bleesing](bleeding)
+    - she is [bleedin](bleeding)
+    - she is [bleding](bleeding)
+    - she sis [bleesing](bleeding)
+    - [Not bleeding](bleeding)
+    - [no bleeding](bleeding)
+    - [not bleding](bleeding)
+    - [not bleeding](bleeding)
+    - [not bleed](bleeding)
+    - [not bleedin](bleeding)
+- intent: answer_nose_bleeding
+  examples: |
+    - the victim is [Nose bleeding](nose_bleeding)
+    - [Nose bleeding](nose_bleeding)
+    - she is [Nose bleeding](nose_bleeding)
+    - he is [Nose bleeding](nose_bleeding)
+    - the victim is [nose bleeding](nose_bleeding)
+    - [nose bleeding](nose_bleeding)
+    - she is [nose bleeding](nose_bleeding)
+    - [Nose bleeding](nose_bleeding)
+- intent: answer_victim_position
+  examples: |
+    - Yes he is [laying on his back](victim_position)
+    - He is [laying on his back](victim_position)
+    - he is [laying](victim_position)
+    - [laying on the back](victim_position)
+    - [Laying on his back](victim_position)
+    - [Laying on the back](victim_position)
+    - [Lying on the back](victim_position)
+    - [lying on side](victim_position)
+    - [lying on the side](victim_position)
+    - [Lying on the side](victim_position)
+    - [laying on the side](victim_position)
+    - [Laying on the side](victim_position)
+    - [lying on stomach](victim_position)
+    - [lying on the stomach](victim_position)
+    - [Lying on the stomach](victim_position)
+    - [laying on the stomach](victim_position)
+    - [Laying on the stomach](victim_position)
+    - [Laying on the back]{"entity": "victim_position", "value": "laying on the back"}
+- intent: answer_no_spinal_injury
+  examples: |
+    - [No spinal injury](spinal_injury)
+    - [no spinal injury](spinal_injury)
+    - No spinal
+    - No spinalll
+    - No spinall
+    - [No spinal injuryyy](spinal_injury)
+    - [none spiinla](spinal_injury)
+    - [not spinaal injiri](spinal_injury)
+    - [no spinnal injuri](spinal_injury)
+    - none spinal
+    - [no spnal injuri](spinal_injury)
+    - [no Spinale injury](spinal_injury)
+- intent: answer_no_other_injury
+  examples: |
+    - [No other injuries](other_injury)
+    - [no other injury](other_injury)
+    - no injuries
+    - [no oter injyr](other_injury)
+    - no injury
+    - not injured
+    - [no oter injyris](other_injury)
+    - [no othr injury](other_injury)
+    - [no othr injuries](other_injury)
+- intent: answer_location
+  examples: |
+    - I'm currently at [37.749,-122.419](location)
+    - [37.779, -122.494](location)
+    - My location is: [37.749,-122.414](location)
+    - Here are my coordinates: [37.749,-122.414](location)
+    - My current victim_position is [37.876,-122.227](location)
+    - I'm at [37.779,-122.414](location) right now
+    - My location is [37.749,-122.414](location)
+    - These are my GPS coordinates: [37.779, -122.494](location)
+    - I am currently at [37.779,-122.414](location)
+    - My current location is [31.234,-121.437](location)
+    - Here are my latitude and longitude: [37.774,-122.494](location)
+    - [35.65896,-10.326548](location)
+- intent: answer_send_alert
+  examples: |
+    - [Send](send)
+    - [Sennd](send)
+    - [SEND](send)
+    - [send](send)
+    - [Not Send](send)
+    - [not Send](send)
+    - [Not send](send)
+    - [Don't Send](send)
+    - [don't Send](send)
+    - [dont Send](send)
+    - [Dont SEND](send)
+    - [not send](send)
+- intent: stop
+  examples: |
+    - stop
+    - nevermind
+    - please stop
+    - i want to stop
+    - stop the form
+- intent: ask_how_to_check_response
+  examples: |
+    - How to check for response?
+    - How to check for response
+    - How to check for responseee
+    - How to check for responsse
+    - How to check for it
+    - how to check
+    - check
+    - check for respnse
+    - cheking for it
+    - tell me how to check or response
+    - check 4 response
+    - how to do this check
+    - please tell me how to check for response
+    - how to checkkkk
+    - how check forr resposne
+    - howwww to check
+    - ask_how_to_check_response
+- intent: answer_unconscious
+  examples: |
+    - There is [no response](unconscious)
+    - There is [response](unconscious)
+    - [No response](unconscious)
+    - [response](unconscious)
+    - he cant talk
+    - he can't talk
+    - he cant move
+    - [no reponse](unconscious)
+    - [no responsee](unconscious)
+    - [respense no](unconscious)
+    - [not responsing](unconscious)
+    - [not responding](unconscious)
+    - [reponse](unconscious)
+    - [responsee](unconscious)
+    - [respense](unconscious)
+    - [responsing](unconscious)
+    - [responding](unconscious)
+    - reeespsosnse
+    - reponnse
+    - nooo responnnnding
+    - respsosne nahi
+    - nnnone responese
+    - nonn responsse
+    - [No response]{"entity": "unconscious", "value": "no response"}
+- intent: answer_no_blockage
+  examples: |
+    - There is [no blockage](airway)
+    - There is a [blockage](airway)
+    - [blockage](airway)
+    - No blockage
+    - no blocage
+    - no blokage
+    - no bloc
+    - no block
+    - not blocked
+    - not bloc
+    - not blockage
+    - not blocage
+    - there is no blockage
+    - [Airway open and clear](airway)
+    - [Airway open](airway)
+    - [airway open](airway)
+    - [answer_no_blockage](airway)
+- intent: ask_detail_recovery
+  examples: |
+    - What is the [recovery](recovery) victim  position
+    - what's that
+    - what's this victim position
+    - [recovery](recovery)?
+    - what recvery
+    - what is the [recovery](recovery)
+    - What is the [recovery](recovery) position?
+- intent: accomplished
+  examples: |
+    - accomplished
+    - Accomplished
+    - I finished
+    - acompliished
+    - accccomplished
+    - acoplished
+- intent: answer_walk
+  examples: |
+    - Yes he can [walk](walk)
+    - Yes she can
+    - yeah, he [walk](walk)
+    - she [walk](walk)
+    - he [walk](walk)
+    - [walk](walk)
+    - [Can not walk](walk)
+    - [Can not walk](walk)
+    - Can [walk](walk)
+    - [Can walk](walk)
+    - Can not walk
+    - Can walk
+    - can not [walk](walk)
+    - [can not walk](walk)
+    - can [walk](walk)
+    - can not walk
+    - can walk
+    - no [walk](walk)
+    - no [walk](walk)
+- intent: answer_facial_injury
+  examples: |
+    - No facial injury
+    - no facal injuri
+    - He doesn't have a facial injury
+    - she doesn't have a facial injury
+    - I don't have a facial injury
+    - He doesn't have a facial injuri
+    - she doesn't have a facial injuri
+    - I don't have a facial injuri
+    - There is a facial injury
+    - there is facal injuri
+    - He has a facial injury
+    - she has a facial injury
+    - I have a facial injury
+    - He has a facial injuri
+    - she has a facial injuri
+    - I have a facial injuries
+- intent: answer_blood_stop
+  examples: |
+    - the bleeding eventually stops
+    - bleeding has stopped
+    - bleeding stops
+    - bleeding didnt stop
+    - bleeding doesnt stop
+    - [bleeding is very heavy](blood_stop)
+    - [bleeding stopped](blood_stop)
+    - [Bleeding is very heavy](blood_stop)
+    - [Bleeding stopped](blood_stop)
+    - [Bleeding is very heavy]{"entity": "blood_stop", "value": "bleeding is very heavy"}
+- intent: call_fire
+  examples: |
+    - Call the [fire](fire) department
+    - Call [fire](fire)
+    - [fire](fire)
+    - There's a [fire](fire), send help
+    - Help! My house is on [fire](fire)!
+    - Smoke is coming out of the building, we need the [fire](fire) department
+    - A tree fell on top of our car and there's a risk of fire, call the [fire](fire) department
+    - I accidentally caused a kitchen fire, please call the [fire](fire) department
+    - There's a gas leak in the building, we should call the [fire](fire) department
+    - An electrical appliance just exploded, we need the [fire](fire) department to check it out
+    - We found a stray kitten stuck in a tree, can you call the [fire](fire) department for help?
+- intent: give_time
+  examples: |
+    - Give me a minute
+    - Give me a time
+    - Give me the time
+    - what is the time
+    - tell me the time
+    - got the time
+- intent: call_ambulance
+  examples: |
+    - Call an [ambulance](ambulance) for a heart attack
+    - Call [ambulance](ambulance)
+    - [ambulance](ambulance)
+    - I need an [ambulance](ambulance) for a car accident
+    - Please call an [ambulance](ambulance) for a seizure
+    - My friend is having a stroke, please send an [ambulance](ambulance)
+    - There's been a bad fall and help is needed, call an [ambulance](ambulance)
+    - This person is unconscious, we need an [ambulance](ambulance) as soon as possible
+    - I think someone is having an allergic reaction, can you call an [ambulance](ambulance)?
+    - There's been a shooting and there are injuries, we need an [ambulance](ambulance) immediately
+    - A child has swallowed something dangerous, please call an [ambulance](ambulance)
+    - We're at a construction site and someone is badly hurt, call an [ambulance](ambulance)
+- intent: call_police
+  examples: |
+    - There's been a robbery, call the [police](police)
+    - call [police](police)
+    - Send help, the [police](police) are needed
+    - I think I saw a crime, please call the [police](police)
+    - Someone has broken into my house, I need to call the [police](police)
+    - I'm being followed, can you call the [police](police) for me?
+    - There's a reckless driver on the road, I'm calling the [police](police) to report it
+    - I was just in an accident and the other driver is aggressive, I need the [police](police) here
+    - There's a suspicious package at the train station, we need the [police](police) to investigate
+    - Someone is vandalizing our property right now, please call the [police](police)
+    - My wallet was stolen, should I call the [police](police) to file a report?
+- intent: answer_where_bleeding
+  examples: |
+    - [arm](organ)
+    - [foot](organ)
+    - neck
+    - finger
+    - fingers
+    - head
+    - back
+    - stomach
+    - [ear](organ)
+    - [eye](organ)
+    - face
+    - cheek
+    - [nose](organ)
+    - [Nose](organ)
+    - [chest](organ)
+    - [teeth](organ)
+    - [tooth](organ)
+    - [feet](organ)
+    - [chin](organ)
+    - [forearm](organ)
+    - [wrist](organ)
+    - [hand](organ)
+    - [Hand](organ)
+    - hands
+    - toes
+    - ankle
+    - leg
+    - knee
+    - thigh
+    - abdomen
+    - navel
+    - armpit
+    - shoulder
+    - shoulder blade
+    - elbow
+    - hip
+    - butt
+    - buttock
+    - heel
+    - [Nose]{"entity": "organ", "value": "nose"}
+- synonym: adult
+  examples: |
+    - Adult
+- synonym: breath
+  examples: |
+    - Breath
+- synonym: laying on the back
+  examples: |
+    - Laying on the back
+- synonym: no response
+  examples: |
+    - No response

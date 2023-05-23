@@ -1,0 +1,79 @@
+version: "3.1"
+
+rules:
+
+- rule: Say goodbye anytime the user says goodbye
+  steps:
+  - intent: goodbye
+  - action: utter_goodbye
+- rule: Say you are welcome you anytime the user says thanks
+  steps:
+  - intent: thanks
+  - action: utter_thanks
+- rule: Say 'I am a bot' anytime the user challenges
+  steps:
+  - intent: bot_challenge
+  - action: utter_iamabot
+- rule: Activate Accident form
+  steps:
+  - intent: tell_accident
+  - action: accident_form
+  - active_loop: accident_form
+
+- rule: Submit Accident form
+  condition:
+  - active_loop: accident_form
+  steps:
+  - action: accident_form
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: action_deactivate_loop
+  - action: utter_submit
+  - action: utter_query_response
+
+- rule: Interruption in Accident Form
+  condition:
+  - active_loop: accident_form
+  steps:
+  - intent: bot_challenge
+  - action: utter_iamabot
+  - action: accident_form
+  - active_loop: accident_form
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: action_deactivate_loop
+  - action: utter_submit
+
+- rule: police_call
+  steps:
+  - intent: call_police
+  - action: utter_call_police
+  - action: utter_query_other_service
+  # - intent: deny
+- rule: ambulance_call
+  # - action: utter_no_other_help
+  # - intent: affirm
+  # - action: utter_yes_other_help
+  steps:
+  - intent: call_ambulance
+  - action: utter_call_ambulance
+  - action: utter_query_other_service
+  # - intent: deny
+- rule: fire_call
+  # - action: utter_no_other_help
+  # - intent: affirm
+  # - action: utter_yes_other_help
+  steps:
+  - intent: call_fire
+  - action: utter_call_fire
+  - action: utter_query_other_service
+  # - intent: deny
+# - action: utter_no_other_help
+# - intent: affirm
+# - action: utter_yes_other_help
+# - rule: help path
+#   steps:
+#   - intent: help
+#   - action: utter_help

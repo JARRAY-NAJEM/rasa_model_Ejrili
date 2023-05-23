@@ -1,0 +1,582 @@
+version: "3.1"
+
+intents:
+- greet
+- goodbye
+- affirm
+- deny
+- mood_great
+- mood_unhappy
+- bot_challenge
+- thanks
+- help
+- tell_accident
+- answer_road_accident
+- answer_victim_or_no_victim
+- answer_number_victims
+- answer_adult_or_child
+- answer_breath
+- answer_bleeding
+- answer_victim_position
+- answer_no_spinal_injury
+- answer_no_other_injury
+- answer_location
+- answer_send_alert
+- answer_no_response
+- stop
+- ask_how_to_check_response
+- answer_unconscious
+- answer_no_blockage
+- ask_detail_recovery
+- accomplished
+- answer_walk
+- answer_where_bleeding
+- answer_facial_injury
+- answer_blood_stop
+- give_time
+- call_ambulance
+- call_fire
+- call_police
+- answer_nose_bleeding
+entities:
+- road_accident
+- victim_or_no_victim
+- number_victims
+- adult_or_child
+- breath
+- bleeding
+- victim_position
+- spinal_injury
+- other_injury
+- location
+- unconscious
+- airway
+- organ
+- send
+- ambulance
+- fire
+- police
+- recovery
+- walk
+- nose_bleeding
+- blood_stop
+
+
+forms:
+  accident_form:
+    required_slots:
+    - road_accident
+    - victim_or_no_victim
+    - number_victims
+    - adult_or_child
+    - unconscious
+    - breath
+    - bleeding
+    - victim_position
+    - spinal_injury
+    - walk
+    - other_injury
+    - location
+    - send
+
+slots:
+  road_accident:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: road_accident
+      conditions:
+      - active_loop: accident_form
+        requested_slot: road_accident
+  victim_or_no_victim:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: victim_or_no_victim
+      conditions:
+      - active_loop: accident_form
+        requested_slot: victim_or_no_victim
+  number_victims:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: number_victims
+      conditions:
+      - active_loop: accident_form
+        requested_slot: number_victims
+  adult_or_child:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: adult_or_child
+      conditions:
+      - active_loop: accident_form
+        requested_slot: adult_or_child
+  unconscious:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: unconscious
+      conditions:
+      - active_loop: accident_form
+        requested_slot: unconscious
+  breath:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: breath
+      conditions:
+      - active_loop: accident_form
+        requested_slot: breath
+  bleeding:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: bleeding
+      conditions:
+      - active_loop: accident_form
+        requested_slot: bleeding
+  victim_position:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: victim_position
+      conditions:
+      - active_loop: accident_form
+        requested_slot: victim_position
+  spinal_injury:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: spinal_injury
+      conditions:
+      - active_loop: accident_form
+        requested_slot: spinal_injury
+  walk:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: walk
+      conditions:
+      - active_loop: accident_form
+        requested_slot: walk
+  other_injury:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: other_injury
+      conditions:
+      - active_loop: accident_form
+        requested_slot: other_injury
+  location:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: location
+      conditions:
+      - active_loop: accident_form
+        requested_slot: location
+  send:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: send
+      conditions:
+      - active_loop: accident_form
+        requested_slot: send
+
+responses:
+  utter_greet:
+  - text: "Hey! How are you?"
+    buttons:
+    - title: "Ejrili"
+      payload: "help"
+
+  utter_cheer_up:
+  - text: "Here is something to cheer you up:"
+    image: "https://i.imgur.com/nGF1K8f.jpg"
+
+  utter_did_that_help:
+  - text: "Did that help you?"
+
+  utter_happy:
+  - text: "Great, carry on!"
+
+  utter_goodbye:
+  - text: "Bye"
+
+  utter_iamabot:
+  - text: "I am a bot, powered by StarDev."
+
+  utter_help:
+  - text: " Hey! I can offer you assistance on emergency situations ?"
+    buttons:
+    - title: "Ambulance"
+      payload: "Ambulance"
+    - title: "Nose bleeding"
+      payload: "Nose bleeding"
+    - title: "Accident"
+      payload: "Accident"
+    - title: "Police"
+      payload: "Police"
+    - title: "Fire"
+      payload: "Fire"
+
+  - text: " I'm here to help! What do you need assistance with?"
+    buttons:
+    - title: "Ambulance"
+      payload: "Ambulance"
+    - title: "Nose bleeding"
+      payload: "Nose bleeding"
+    - title: "Accident"
+      payload: "Accident"
+    - title: "Police"
+      payload: "Police"
+    - title: "Fire"
+      payload: "Fire"
+
+  - text: " Don't worry, I'm here to help. What you need assistance with?"
+    buttons:
+    - title: "Ambulance"
+      payload: "Ambulance"
+    - title: "Nose bleeding"
+      payload: "Nose bleeding"
+    - title: "Accident"
+      payload: "Accident"
+    - title: "Police"
+      payload: "Police"
+    - title: "Fire"
+      payload: "Fire"
+
+  - text: " let me know what you need assistance with."
+    buttons:
+    - title: "Ambulance"
+      payload: "Ambulance"
+    - title: "Nose bleeding"
+      payload: "Nose bleeding"
+    - title: "Accident"
+      payload: "Accident"
+    - title: "Police"
+      payload: "Police"
+    - title: "Fire"
+      payload: "Fire"
+
+  - text: " How can I assist you?"
+    buttons:
+    - title: "Ambulance"
+      payload: "Ambulance"
+    - title: "Nose bleeding"
+      payload: "Nose bleeding"
+    - title: "Accident"
+      payload: "Accident"
+    - title: "Police"
+      payload: "Police"
+    - title: "Fire"
+      payload: "Fire"
+
+  utter_ask_road_accident:
+  - text: "Which kind of accident?"
+    buttons:
+    - title: Road accident
+      payload: "Road accident"
+    - title: Work accident
+      payload: "Work accident"
+    - title: Sport accident
+      payload: "Sport accident"
+  utter_answer_road_accident:
+  - text: "First of all, mark the zone with the help of possible witnesses. If you have pre-signaling triangles, place them at least 200m away from the accident. Ensure the area is safe for you and others."
+  utter_alert:
+  - text: "Do not worry about the alert message. I will take care of it"
+  utter_ask_victim_or_no_victim:
+  - text: "Are you the Vitim?"
+    buttons:
+    - title: I am the victim
+      payload: "I am the victim"
+    - title: I am not the victim
+      payload: "I am not the victim"
+
+  utter_ask_number_victims:
+  - text: "How many victims?"
+    buttons:
+    - title: "1"
+      payload: "1"
+    - title: "2"
+      payload: "1"
+    - title: "3"
+      payload: "1"
+  utter_ask_adult_or_child:
+  - text: "Adult or child?"
+    buttons:
+    - title: Adult
+      payload: "Adult"
+    - title: Child
+      payload: "child"
+  utter_ask_breath:
+  - text: "Can the victim breath normally?"
+    buttons:
+    - title: "Breath"
+      payload: "Breath"
+    - title: "No Breath"
+      payload: "Breath"
+
+  utter_ask_unconscious:
+  - text: "Now tell me, does the victim respond?"
+    buttons:
+    - title: "There is response"
+      payload: "There is response"
+    - title: "No response"
+      payload: "No response"
+  utter_ask_bleeding:
+  - text: Are there any signs of severe bleeding?
+    buttons:
+    - title: Severe bleeding
+      payload: "Severe bleeding"
+    - title: Not bleeding
+      payload: "Not bleeding"
+
+  utter_ask_victim_position:
+  - text: "What's the victim's position?"
+    buttons:
+    - title: Laying on the back
+      payload: "Laying on the back"
+    - title: Laying on the stomach
+      payload: "Laying on the stomach"
+    - title: Laying on the side
+      payload: "Laying on the side"
+
+  utter_ask_spinal_injury:
+  - text: "Does the victim have a spinal injury?"
+    buttons:
+    - title: Spinal injury
+      payload: "Spinal injury"
+    - title: No spinal injury
+      payload: "No spinal injury"
+  utter_ask_walk:
+  - text: "Can the victims walk?"
+    buttons:
+    - title: Can walk
+      payload: "Can walk"
+    - title: Can not walk
+      payload: "Can not walk"
+
+  utter_ask_other_injury:
+  - text: "Does the victim have any other injury?"
+    buttons:
+    - title: No other injuries
+      payload: "No other injuries"
+
+  utter_ask_location:
+  - text: "Can you share your location with me?"
+    image: "https://i.ibb.co/fH6N98Z/location.jpg"
+  - text: "I need to know where you are."
+    image: "https://i.ibb.co/fH6N98Z/location.jpg"
+  - text: "Could you please send me your current location?"
+    image: "https://i.ibb.co/fH6N98Z/location.jpg"
+  - text: "Where are you right now?"
+    image: "https://i.ibb.co/fH6N98Z/location.jpg"
+
+  utter_submit:
+  - text: Ok. Thanks!
+  utter_ask_continue:
+  - text: Are you sure you want to stop the form?
+    buttons:
+    - title: "yes"
+      payload: "/affirm"
+    - title: "No"
+      payload: "/deny"
+  utter_ask_send:
+  - text: "Do you agree for send alert to social media ?"
+    buttons:
+    - title: "Send"
+      payload: "Send"
+    - title: "Don't send"
+      payload: "Not Send"
+
+
+
+  utter_query_response:
+  - text: "Now tell me, does the victim respond?"
+    buttons:
+    - title: There is response
+      payload: "There is response"
+    - title: No response
+      payload: "No response"
+    - title: How to check for response?
+      payload: ask_how_to_check_response
+  utter_response_detail:
+  - text: "Ask the victim about name, squeeze the victim's shoulders."
+    image: "https://i.ibb.co/frNZhgx/slouders.png"
+  utter_query_again_response:
+  - text: "So please, tell me, does the victim respond?"
+    buttons:
+    - title: There is response
+      payload: "There is response"
+    - title: No response
+      payload: "No response"
+  utter_airway_detail:
+  - text: "Check his mouth for anything blocking the airway. This could include the tongue, food, vomit or blood."
+    image: "https://i.ibb.co/3113mvX/airway.png"
+  utter_query_airway:
+  - text: "Is the victim's airway open and clear?"
+    buttons:
+    - title: There is a blockage
+      payload: "There is a blockage"
+    - title: Airway open and clear
+      payload: "Airway open and clear"
+  utter_reassure:
+  - text: "Don’t panic please and try to do these instructions"
+  utter_recovery:
+  - text: "Place the victim in recovery position"
+    buttons:
+    - title: What is the recovery position?
+      payload: "What is the recovery position?"
+
+  utter_kneel_on_the_floor:
+  - text: "Don’t panic please and try to do these instructions\n\nKneel beside the casualty. Remove their spectacles and any bulky objects such as glasses, keys or phones from pockets. Straighten their legs"
+    image: "https://i.ibb.co/PcNjtgR/2.png"
+  utter_far_arm:
+  - text: "Take the victim's far arm and place it across his chest so the back of his hand is against his cheek nearest you"
+    image: "https://i.ibb.co/nr5dpgv/4.png"
+  utter_free_hand:
+  - text: "Use your free hand to bend the victim's knee farthest from you to a right angle."
+    image: "https://i.ibb.co/ZMCRsTy/5.png"
+  utter_roll_victim:
+  - text: "Carefully roll the victim onto his side by pulling on the bent knee. His bent arm should be supporting the head, and his extended arm will stop you rolling them too far."
+    image: "https://i.ibb.co/WB4WmMn/6.jpg"
+  utter_adjust_victim:
+  - text: "Adjust the victim's upper leg so that both his hip and knee are bent at right angles"
+    image: "https://i.ibb.co/VQnKFyh/7.png"
+  utter_tilting:
+  - text: "Open his airway by gently tilting his head back and lifting his chin, and check again that nothing is blocking his airway."
+    image: "https://i.ibb.co/vhnTq3r/tilting.jpg"
+  utter_query_accomplished:
+  - text: "Tell me when you finish!"
+    buttons:
+    - title: Accomplished
+      payload: accomplished
+  utter_query_other_service:
+  - text: "Any other help?"
+    buttons:
+    - title: "yes"
+      payload: "/affirm"
+    - title: "no"
+      payload: "/deny"
+  utter_wait_emergency_medical_equipment:
+  - text: "Please stay with him and monitor his condition until the emergency medical equipment arrives"
+    # buttons:
+  # - title: "okay"
+  #   payload: "/affirm"
+  utter_call_ambu:
+  - text: "Please call the ambulance department right away at 190 and inform them of your current location."
+    image: "https://i.ibb.co/dD2x2gp/ambulance.jpg"
+  utter_no_other_help:
+  - text: " I'm here to help you any time"
+  utter_yes_other_help:
+  - text: " I'm here to help! What do you need assistance with?"
+    buttons:
+    - title: "Ambulance"
+      payload: "Ambulance"
+    - title: "Nose bleeding"
+      payload: "Nose bleeding"
+    - title: "Accident"
+      payload: "Accident"
+    - title: "Police"
+      payload: "Police"
+    - title: "Fire"
+      payload: "Fire"
+  utter_thanks_for_ask:
+  - text: "Thanks for your trust, I'm here to help you any time"
+  utter_call_ambulance:
+  - text: "Please call the ambulance department right away at 190 and inform them of your current location."
+    image: "https://i.ibb.co/dD2x2gp/ambulance.jpg"
+  utter_call_police:
+  - text: "Please call the police department right away at 197 and inform them of your current location."
+    image: "https://i.ibb.co/k35by8v/police.jpg"
+  utter_call_fire:
+  - text: "Please call the fire department immediately at 198 and provide your location."
+    image: "https://i.ibb.co/xXzhTyn/fire.jpg"
+
+  utter_thanks:
+  - text: "You're welcome!"
+  - text: "No problem, happy to help!"
+  - text: "It was my pleasure, anything for you!"
+  - text: "Glad I could assist!"
+  - text: "I'm always here to help, thank you for asking!"
+  - text: "You don't have to thank me, it's my job!"
+  - text: "You're welcome, let me know if you need anything else."
+  - text: "You are welcome ^_^"
+  - text: "No worries, you are welcome :)"
+  - text: "Not at all ^^"
+  - text: "It's my job"
+
+
+  utter_ask_organ:
+  - text: "From where?"
+    buttons:
+    - title: Nose
+      payload: "Nose"
+    - title: hand
+      payload: "hand"
+
+  utter_ask_facial_injury:
+  - text: " Is there a facial injury that do not allow to put pressure on thr nose?"
+    buttons:
+    - title: "No facial injury"
+      payload: "/answer_facial_injury"
+    - title: "There is facial injury"
+      payload: "/answer_facial_injury"
+
+  utter_first_aid_nosebleed1:
+  - text: "Apply pressure from the finger and thumb to the soft part of the nostrils below the bridge of the nose for at least 10 minutes. You can get the casualty to do this themselves if they are able to. \n\nSit the casualty up, head slightly forward. Ask the casualty to breathe through their mouth and not to blow their nose."
+    image: "https://i.ibb.co/pxjbqP1/nose-Beelding.jpg"
+
+  # utter_first_aid_nosebleed2:
+  # - text: "Sit the casualty up, head slightly forward. Ask the casualty to breathe through their mouth and not to blow their nose."
+
+  utter_first_aid_nosebleed3:
+  - text: "Place an ice pack or bag of frozen vegetables covered by a towel on the bridge of the nose.\n\nTell the victiim to stay upright, rather than lying down, as this reduces the blood pressure in the blood vessels of the nose and will discourage further bleeding.\n\nLoosen tight clothing around the neck. Place cold we towels (or ice wrapped in a wet cloth) on the neck and forehead. \n\nDoes the bleeding stop after 15 minutes of non-stop pressure?"
+    buttons:
+    - title: "Bleeding stopped"
+      payload: "Bleeding stopped"
+    - title: "Bleeding is very heavy"
+      payload: "Bleeding is very heavy"
+  # utter_first_aid_nosebleed4:
+  # - text: "Tell the victiim to stay upright, rather than lying down, as this reduces the blood pressure in the blood vessels of the nose and will discourage further bleeding."
+  # utter_first_aid_nosebleed5:
+  # - text: "\n\nLoosen tight clothing around the neck. Place cold we towels (or ice wrapped in a wet cloth) on the neck and forehead. "
+
+  # utter_request_bleeding:
+  # - text: "Does the bleeding stop after 15 minutes of non-stop pressure?"
+  #   buttons:
+  #   - title: "Bleeding stopped"
+  #     payload: "Bleeding stopped"
+  #   - title: "Bleeding is very heavy"
+  #     payload: "Bleeding is very heavy"
+  utter_action_check_bleeding:
+  - text: " Call Ambulance Or Go to the nearest emergency department. It may be necessary for a doctor or nurse to pack the nose with dressings to stop the bleeding."
+    image: "https://i.ibb.co/dD2x2gp/ambulance.jpg"
+  utter_heavy_bleeding:
+  - text: " Call Ambulance Or Go to the nearest emergency department. It may be necessary for a doctor or nurse to pack the nose with dressings to stop the bleeding."
+    image: "https://i.ibb.co/dD2x2gp/ambulance.jpg"
+
+
+actions:
+- action_deactivate_loop
+- utter_action_check_bleeding
+- action_show_time
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true

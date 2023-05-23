@@ -1,0 +1,484 @@
+version: "3.1"
+
+stories:
+
+- story: happy path
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: mood_great
+  - action: utter_happy
+
+- story: path about time
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: give_time
+  - action: action_show_time
+
+- story: sad path 1
+
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: mood_unhappy
+  - action: utter_cheer_up
+  - action: utter_did_that_help
+  - intent: affirm
+  - action: utter_happy
+
+- story: sad path 2
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: mood_unhappy
+  - action: utter_cheer_up
+  - action: utter_did_that_help
+  - intent: deny
+  - action: utter_goodbye
+
+- story: User interrupts the form and doesn't want to continue
+
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: tell_accident
+  - action: accident_form
+  - active_loop: accident_form
+  - intent: stop
+  - action: utter_ask_continue
+  - or:
+    - intent: stop
+    - intent: affirm
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: action_deactivate_loop
+  - action: utter_submit
+
+- story: interactive story 2
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: help
+  - action: utter_help
+  - intent: tell_accident
+  - action: accident_form
+  - active_loop: accident_form
+  - intent: stop
+  - action: utter_ask_continue
+  - intent: affirm
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: action_deactivate_loop
+  - action: utter_help
+  - intent: goodbye
+  - action: utter_goodbye
+
+- story: police call
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: help
+  - action: utter_help
+  - intent: call_police
+    entities:
+    - police: Police
+  - action: utter_call_police
+  - action: utter_query_other_service
+  - intent: deny
+  - action: utter_no_other_help
+  - intent: affirm
+  - action: utter_yes_other_help
+
+- story: ambulance call
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: help
+  - action: utter_help
+  - intent: call_ambulance
+    entities:
+    - ambulance: Ambulance
+  - action: utter_call_ambulance
+  - action: utter_query_other_service
+  - intent: deny
+  - action: utter_no_other_help
+  - intent: affirm
+  - action: utter_yes_other_help
+
+- story: fire call
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: help
+  - action: utter_help
+  - intent: call_fire
+    entities:
+    - fire: Fire
+  - action: utter_call_fire
+  - action: utter_query_other_service
+  - intent: deny
+  - action: utter_no_other_help
+  - intent: affirm
+  - action: utter_yes_other_help
+
+- story: help path
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: help
+  - action: utter_help
+
+- story: nose bleeding
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: help
+  - action: utter_help
+  - intent: answer_nose_bleeding
+    entities:
+    - nose_bleeding: Nose bleeding
+  - action: utter_ask_facial_injury
+  - intent: answer_facial_injury
+  - action: utter_ask_organ
+  - intent: answer_where_bleeding
+    entities:
+    - organ: Nose
+  - action: utter_first_aid_nosebleed1
+  - action: utter_first_aid_nosebleed3
+    # - action: utter_first_aid_nosebleed2
+  - intent: answer_blood_stop
+    # - action: utter_request_bleeding
+    entities:
+    - blood_stop: Bleeding is very heavy
+  - action: utter_heavy_bleeding
+  - action: utter_query_other_service
+  - intent: deny
+  - action: utter_thanks_for_ask
+  - intent: thanks
+  - action: utter_thanks
+
+# - story: interactive_story_1
+
+#   steps:
+#   - intent: greet
+#   - action: utter_greet
+#   - intent: help
+#   - action: utter_help
+#   - intent: tell_accident
+#   - action: accident_form
+#   - active_loop: accident_form
+#   - slot_was_set:
+#     - requested_slot: road_accident
+#   - intent: answer_road_accident
+#     entities:
+#     - road_accident: Road accident
+#   - slot_was_set:
+#     - road_accident: Road accident
+#   - action: accident_form
+#   - slot_was_set:
+#     - requested_slot: victim_or_no_victim
+#   - intent: answer_victim_or_no_victim
+#     entities:
+#     - victim_or_no_victim: I am not the victim
+#   - slot_was_set:
+#     - victim_or_no_victim: I am not the victim
+#   - action: accident_form
+#   - slot_was_set:
+#     - requested_slot: number_victims
+#   - intent: answer_number_victims
+#     entities:
+#     - number_victims: '1'
+#   - slot_was_set:
+#     - number_victims: '1'
+#   - action: accident_form
+#   - slot_was_set:
+#     - requested_slot: adult_or_child
+#   - intent: answer_adult_or_child
+#     entities:
+#     - adult_or_child: adult
+#   - slot_was_set:
+#     - adult_or_child: adult
+#   - action: accident_form
+#   - slot_was_set:
+#     - requested_slot: unconscious
+#   - intent: answer_unconscious
+#     entities:
+#     - unconscious: no response
+#   - slot_was_set:
+#     - unconscious: no response
+#   - action: accident_form
+#   - slot_was_set:
+#     - requested_slot: breath
+#   - intent: answer_breath
+#     entities:
+#     - breath: breath
+#   - slot_was_set:
+#     - breath: breath
+#   - action: accident_form
+#   - slot_was_set:
+#     - requested_slot: bleeding
+#   - intent: answer_bleeding
+#     entities:
+#     - bleeding: Not bleeding
+#   - slot_was_set:
+#     - bleeding: Not bleeding
+#   - action: accident_form
+#   - slot_was_set:
+#     - requested_slot: victim_position
+#   - intent: answer_victim_position
+#     entities:
+#     - victim_position: laying on the back
+#   - slot_was_set:
+#     - victim_position: laying on the back
+#   - action: accident_form
+#   - slot_was_set:
+#     - requested_slot: spinal_injury
+#   - intent: answer_no_spinal_injury
+#     entities:
+#     - spinal_injury: No spinal injury
+#   - slot_was_set:
+#     - spinal_injury: No spinal injury
+#   - action: accident_form
+#   - slot_was_set:
+#     - requested_slot: walk
+#   - intent: answer_walk
+#   - action: accident_form
+#   - slot_was_set:
+#     - requested_slot: walk
+#   - intent: answer_walk
+#     entities:
+#     - walk: walk
+#   - slot_was_set:
+#     - walk: walk
+#   - action: accident_form
+#   - slot_was_set:
+#     - requested_slot: other_injury
+#   - intent: answer_no_other_injury
+#     entities:
+#     - other_injury: No other injuries
+#   - slot_was_set:
+#     - other_injury: No other injuries
+#   - action: accident_form
+#   - slot_was_set:
+#     - requested_slot: location
+#   - intent: answer_location
+#     entities:
+#     - location: 35.65896,-10.326548
+#   - slot_was_set:
+#     - location: 35.65896,-10.326548
+#   - action: accident_form
+#   - slot_was_set:
+#     - requested_slot: send
+#   - intent: answer_send_alert
+#     entities:
+#     - send: Send
+#   - slot_was_set:
+#     - send: Send
+#   - action: action_deactivate_loop
+#   - slot_was_set:
+#     - requested_slot: null
+#   - slot_was_set:
+#     - road_accident: null
+#   - slot_was_set:
+#     - victim_or_no_victim: null
+#   - slot_was_set:
+#     - number_victims: null
+#   - slot_was_set:
+#     - adult_or_child: null
+#   - slot_was_set:
+#     - breath: null
+#   - slot_was_set:
+#     - bleeding: null
+#   - slot_was_set:
+#     - victim_position: null
+#   - slot_was_set:
+#     - spinal_injury: null
+#   - slot_was_set:
+#     - walk: null
+#   - slot_was_set:
+#     - other_injury: null
+#   - slot_was_set:
+#     - location: null
+#   - slot_was_set:
+#     - send: null
+#   - action: utter_submit
+#   - action: utter_query_response
+#   - intent: ask_how_to_check_response
+#   - action: utter_response_detail
+#   - action: utter_query_again_response
+#   - intent: answer_unconscious
+#     entities:
+#     - unconscious: no response
+#   - action: utter_airway_detail
+#   - action: utter_query_airway
+#   - intent: answer_no_blockage
+#     entities:
+#     - airway: answer_no_blockage
+#   - action: utter_recovery
+#   - intent: ask_detail_recovery
+#     entities:
+#     - recovery: recovery
+#   - action: utter_kneel_on_the_floor
+#   - action: utter_far_arm
+#   - action: utter_free_hand
+#   - action: utter_roll_victim
+#   - action: utter_adjust_victim
+#   - action: utter_tilting
+#   - action: utter_query_accomplished
+#   - intent: accomplished
+#   - action: utter_wait_emergency_medical_equipment
+#   - action: utter_call_ambu
+#   - action: utter_query_other_service
+#   - intent: deny
+#   - action: utter_no_other_help
+#   - intent: affirm
+#   - action: utter_yes_other_help
+
+
+- story: interactive story 1
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: help
+  - action: utter_help
+  - intent: tell_accident
+  - action: accident_form
+  - active_loop: accident_form
+  - slot_was_set:
+    - requested_slot: road_accident
+  - slot_was_set:
+    - road_accident: Road accident
+  - slot_was_set:
+    - requested_slot: victim_or_no_victim
+  - slot_was_set:
+    - victim_or_no_victim: Not victim
+  - slot_was_set:
+    - requested_slot: number_victims
+  - slot_was_set:
+    - number_victims: "1"
+  - slot_was_set:
+    - requested_slot: adult_or_child
+  - slot_was_set:
+    - adult_or_child: Adult
+  - slot_was_set:
+    - requested_slot: unconscious
+  - slot_was_set:
+    - unconscious: No response
+  - slot_was_set:
+    - requested_slot: breath
+  - slot_was_set:
+    - breath: Breath
+  - slot_was_set:
+    - requested_slot: bleeding
+  - slot_was_set:
+    - bleeding: Not bleeding
+  - slot_was_set:
+    - requested_slot: victim_position
+  - slot_was_set:
+    - victim_position: Laying on the back
+  - slot_was_set:
+    - requested_slot: spinal_injury
+  - slot_was_set:
+    - spinal_injury: No spinal injury
+  - slot_was_set:
+    - requested_slot: walk
+  - slot_was_set:
+    - walk: Can not walk
+  - slot_was_set:
+    - requested_slot: other_injury
+  - slot_was_set:
+    - other_injury: No other injuries
+  - slot_was_set:
+    - requested_slot: location
+  - slot_was_set:
+    - location: 37.779,-122.494
+  - slot_was_set:
+    - requested_slot: send
+  - slot_was_set:
+    - send: Send
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: action_deactivate_loop
+  - action: utter_submit
+  - checkpoint: follow_victim_situation
+
+- story: follow victim Situation
+  steps:
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: action_deactivate_loop
+  - action: utter_submit
+  - checkpoint: follow_victim_situation
+  - action: utter_query_response
+  - intent: ask_how_to_check_response
+  - action: utter_response_detail
+  - action: utter_query_again_response
+  - intent: answer_unconscious
+    entities:
+    - unconscious: "No response"
+  - checkpoint: follow victim Situation 2
+
+- story: follow victim Situation 2
+  steps:
+  - action: utter_query_again_response
+  - intent: answer_unconscious
+    entities:
+    - unconscious: "No response"
+  - checkpoint: follow victim Situation 2
+  - action: utter_airway_detail
+  - action: utter_query_airway
+  - intent: answer_no_blockage
+    entities:
+    - airway: "Airway open and clear"
+  - checkpoint: follow victim Situation 3
+
+- story: follow victim Situation 3
+  steps:
+  - checkpoint: follow victim Situation 3
+  - action: utter_recovery
+  - intent: ask_detail_recovery
+    entities:
+    - recovery: "What is the recovery position?"
+  - action: utter_kneel_on_the_floor
+  - action: utter_far_arm
+  - action: utter_free_hand
+  - action: utter_roll_victim
+  - action: utter_adjust_victim
+  - action: utter_tilting
+  - checkpoint: follow victim Situation 4
+
+- story: follow victim Situation 4
+
+  # - action: utter_reassure
+
+  steps:
+  - action: utter_kneel_on_the_floor
+  - action: utter_far_arm
+  - action: utter_free_hand
+  - action: utter_roll_victim
+  - action: utter_adjust_victim
+  - action: utter_tilting
+  - checkpoint: follow victim Situation 4
+  - action: utter_query_accomplished
+  - intent: accomplished
+  - action: utter_wait_emergency_medical_equipment
+  - action: utter_call_ambulance
+    # - intent: affirm
+  - action: utter_query_other_service
+  - intent: deny
+  - action: utter_no_other_help
+  - intent: affirm
+  - action: utter_yes_other_help
+  # - action: utter_call_ambulance
+# - action: utter_query_other_service
+# - intent: deny
+# - action: utter_wait_emergency_medical_equipment
+# - intent: affirm
+# - action: utter_thanks_for_ask
+# - intent: thanks
+# - action: utter_thanks
